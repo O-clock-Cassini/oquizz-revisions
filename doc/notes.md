@@ -4,6 +4,6 @@
 
 
 ## Relation : 
-- OneToOne : 1 vers 1 (1 -> 1)
-- OneToMany : 1 vers Plusieurs (1 -> N) 
-- ManyTo22Many : Plusieurs vers plusions (N -> N)
+- OneToOne : 1 vers 1 (1 -> 1) -> FK sur A ou B
+- OneToMany : 1 A vers Plusieurs B (1 -> N) -> FK sur B (A_id)
+- ManyToMany : Plusieurs vers plusieurs (N -> N) -> Table de liaison entre A et B
