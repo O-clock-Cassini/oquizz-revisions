@@ -64,7 +64,8 @@ class Person {
     }
 
     getAge() {
-        return this.age;cla
+        return this.age;
+        
     }
 
     getFullname() {
