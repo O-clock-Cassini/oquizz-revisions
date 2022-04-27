@@ -14,6 +14,10 @@ class CoreModel {
     get id() {
         return this.#id;
     }
+
+    set id(value) {
+        this.#id = value;
+    }
 }
 
 module.exports = CoreModel;

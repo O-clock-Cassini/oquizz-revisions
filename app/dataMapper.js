@@ -42,6 +42,21 @@ const dataMapper = {
     },
     getOneLevel: async (id) => {
         // requeté la BDD pour un élément
+        try {
+            // const sql = {
+            //     text: `SELECT * FROM "level" WHERE id=$1`,
+            //     values: [id]
+            // }
+            // const result = await client.query(sql);
+
+            const result = await client.query(`SELECT * FROM "level" WHERE id=$1`,[id]);
+
+            const level = new Level(result.rows[0]);
+
+            return level;
+        } catch(err) {
+
+        }
 
         // retourner un objet de type Level
     }
