@@ -3,6 +3,7 @@ dotenv.config();
 
 
 const Level = require('./app/models/level');
+const User = require('./app/models/user');
 
 // const dataMapper = require('./app/dataMapper');
 
