@@ -1,5 +1,22 @@
 # OQuiz
 
+## Jour 2 : Sequelize
+
+On a un super ORM, on créé des models ?
+
+Créer le model Question
+
+Commencer par vérifier que tout fonctionne dans un controller questionController, par exemple  :
+
+*   Trouver toutes les Question.
+*   Trouver la question dont l'id est 3.
+*   Créer une question
+*   Supprimer une question
+
+Bonus qui pique :
+
+Récupérer une Question avec son Level associé : https://sequelize.org/docs/v6/core-concepts/assocs/
+
 ## Jour 1 : Active Record
 
 Les méthodes Active Record du modèle `Level` ont été codées.
