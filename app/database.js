@@ -1,12 +1,11 @@
-// SoC : La connexion à la BDD
 
-// on require le module pour se connecter
-// et onistancie un Client qui reprenste notre connexion à la base de donnée
+const { Sequelize } = require('sequelize');
 
-const { Client } = require('pg');
+const sequelize = new Sequelize(process.env.PG_URL, {
+    define: {
+        updatedAt: 'updated_at',
+        createdAt: 'created_at'
+    }
+});
 
-const client = new Client(process.env.PG_URL);
-
-client.connect();
-
-module.exports = client;
+module.exports = sequelize;
