@@ -84,8 +84,15 @@ const { Level, Question } = require('./app/models/index');
 
 // A l'inverse
 (async () => {
-    const q = await Question.findByPk(1, {
-        include: ["level", "answers", "good_answer"]
+    const q = await Question.findByPk(20, {
+        include: [
+            "level",
+            "answers",
+            "good_answer",
+            { 
+                association: "quiz", 
+                include: ["user", "tags"]
+            }]
     });
     console.log(`La première question est "${q.question}"et son niveau est ${q.level.name}`);
 
@@ -95,4 +102,10 @@ const { Level, Question } = require('./app/models/index');
     
     console.log("-----------------------------");
     console.log(`La bonne réponse est : ${q.good_answer.description}`);
+
+    console.log("..................................")
+    console.log(`Cette question appartient au Quiz : ${q.quiz.title} écrit par ${q.quiz.user.firstname}`)
+    console.log("---------------- TAGSSSS -----------------------");
+    
+    q.quiz.tags.forEach(tag => console.log(`- ${tag.name}`));
 })();

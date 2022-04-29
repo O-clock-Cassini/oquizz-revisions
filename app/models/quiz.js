@@ -1,20 +1,14 @@
-const CoreModel = require("./coreModel");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../database');
 
-class Quiz extends CoreModel{
+class Quiz extends Model {}
 
-    title;
-    description;
-    user_id;
-
-
-
-    constructor(obj) {
-        super(obj);
-
-        this.title = obj.title;
-        this.description = obj.description;
-        this.user_id = obj.user_id;
-    }
-}
+Quiz.init({
+    title: DataTypes.STRING,
+    description: DataTypes.TEXT
+}, {
+    sequelize,
+    tableName: "quiz"
+});
 
 module.exports = Quiz;

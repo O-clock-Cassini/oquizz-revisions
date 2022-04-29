@@ -1,6 +1,9 @@
 const Level = require('./level');
 const Question = require('./question');
 const Answer = require('./answer');
+const Quiz = require('./quiz');
+const User = require('./user');
+const Tag = require('./tag');
 
 // https://www.figma.com/file/8WMgiFoYLs0uxSDKxXByoJ/Untitled?node-id=0%3A1
 
@@ -45,24 +48,50 @@ Question.belongsTo(Answer, {
 // Question Quiz <-> One To Many // quiz_id sur Question
 
 // Un Quiz possède PLUSIEURS Questions
+// Quiz has Many Questions
+Quiz.hasMany(Question, {
+    foreignKey: "quiz_id",
+    as: "questions"
+});
 
 // Réciproque : UNE question appartient à UN quiz
-
+// Question belongs to Quiz
+Question.belongsTo(Quiz, {
+    foreignKey: "quiz_id",
+    as: "quiz"
+});
 
 // User Quiz <-> One To Many // user_id sur Quiz
 
 // UN Quiz appartient à UN User 
+Quiz.belongsTo(User, {
+    foreignKey: "user_id",
+    as: "user"
+});
 
 // Réciproque : UN User possède PLUSIEURS Quiz
-
-
+User.hasMany(Quiz, {
+    foreignKey: "user_id",
+    as: "quizzes"
+});
 
 
 // -------------------------------------------------------
 // UN Quiz possède PLUSIEURS tags
+Quiz.belongsToMany(Tag, {
+    through: "quiz_has_tag",
+    foreignKey: 'quiz_id',
+    otherKey: 'tag_id',
+    as: "tags",
+});
 
 // Un Tag possède PLUSIEURS Quiz ... la réciproque
-
+Tag.belongsToMany(Quiz, {
+    through: "quiz_has_tag",
+    foreignKey: "tag_id",
+    otherKey: "quiz_id",
+    as: "quizzes"
+});
 
 
 
