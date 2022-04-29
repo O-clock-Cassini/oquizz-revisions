@@ -9,7 +9,7 @@ class Level extends Model {}
 
 Level.init({
     name: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
       },
 },{

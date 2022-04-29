@@ -22,14 +22,7 @@ const userController = {
         res.send("Not found");
     },
     create: async (req, res) => {
-        // const body = req.body;
-
-        const body = {
-            firstname: "George",
-            lastname: "Du Jingle",
-            email: "levraitarzan@gmail.lol",
-            password: "123456azertypassword"
-        }
+         const body = req.body;
 
         try {
             const user = await User.create(body);

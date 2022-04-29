@@ -4,8 +4,8 @@ const { Model, DataTypes } = require('sequelize');
 class User extends Model {}
 
 User.init({
-    firstname: DataTypes.STRING, // Il existe une forme racourrci quand on utilise les params par défaut
-    lastname: DataTypes.STRING,
+    firstname: DataTypes.TEXT, // Il existe une forme racourrci quand on utilise les params par défaut
+    lastname: DataTypes.TEXT,
     email: {
         type: DataTypes.STRING,
         allowNull: false,

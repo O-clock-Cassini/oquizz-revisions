@@ -30,7 +30,6 @@ const Level = require('./app/models/level');
     // Je les affiche dans la console
     levels.forEach(level => console.log(`${level.id} - ${level.name}`));
 
-
 })();
 
 // const User = require('./app/models/user');
