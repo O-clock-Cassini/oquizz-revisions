@@ -2,35 +2,34 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 
-const Level = require('./app/models/level');
+const { Level, Question } = require('./app/models/index');
 
+// (async () => { 
 
-(async () => { 
+//     // Je récupère tout les niveau depuis la base de donnée
+//     let levels = await Level.findAll();
+//     // Je les affiche dans la console
+//     levels.forEach(level => console.log(`${level.id} - ${level.name}`));
 
-    // Je récupère tout les niveau depuis la base de donnée
-    let levels = await Level.findAll();
-    // Je les affiche dans la console
-    levels.forEach(level => console.log(`${level.id} - ${level.name}`));
+//     // Je récupère le niveau avec l'id 14
+//     const level = await Level.findByPk(14);
+//     // Je l'affiche dans la console
+//     console.log("Found one " + level.name);
 
-    // Je récupère le niveau avec l'id 14
-    const level = await Level.findByPk(14);
-    // Je l'affiche dans la console
-    console.log("Found one " + level.name);
+//     // Je crée un niveau
+//     // const nightmare = await Level.create({ name: "Nightmare !"});
+//     // console.log(nightmare.id + " - " + nightmare.name);
 
-    // Je crée un niveau
-    // const nightmare = await Level.create({ name: "Nightmare !"});
-    // console.log(nightmare.id + " - " + nightmare.name);
+//     // Je mets à jour un element
+//     level.name = "Hurt me pleny";
+//     level.save();
 
-    // Je mets à jour un element
-    level.name = "Hurt me pleny";
-    level.save();
+//     // Je récupère tout les niveau depuis la base de donnée
+//     levels = await Level.findAll();
+//     // Je les affiche dans la console
+//     levels.forEach(level => console.log(`${level.id} - ${level.name}`));
 
-    // Je récupère tout les niveau depuis la base de donnée
-    levels = await Level.findAll();
-    // Je les affiche dans la console
-    levels.forEach(level => console.log(`${level.id} - ${level.name}`));
-
-})();
+// })();
 
 // const User = require('./app/models/user');
 
@@ -75,3 +74,25 @@ const Level = require('./app/models/level');
 
 
 // l.delete();
+
+(async () => {
+    const l = await Level.findByPk(1, {
+        include: ["questions"]
+    });
+    // console.log(l);
+})();
+
+// A l'inverse
+(async () => {
+    const q = await Question.findByPk(1, {
+        include: ["level", "answers", "good_answer"]
+    });
+    console.log(`La première question est "${q.question}"et son niveau est ${q.level.name}`);
+
+    console.log(`Les réponses possible sont : `);
+
+    q.answers.forEach((answer) => console.log(`- ${answer.description}`));
+    
+    console.log("-----------------------------");
+    console.log(`La bonne réponse est : ${q.good_answer.description}`);
+})();

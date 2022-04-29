@@ -1,21 +1,13 @@
-const CoreModel = require("./coreModel");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../database');
 
-class Answer extends CoreModel {
+class Answer extends Model {}
 
-    description;
-    question_id;
-
-    constructor(obj) {
-        super(obj);
-
-        if(typeof obj.description !== 'string') {
-            throw Error("Answer description must be a string!");
-            // on "lève" une erreur => ça arrête tout !
-        }
-
-        this.description = obj.description;
-        this.question_id = obj.question_id;
-    }
-}
+Answer.init({
+    description: DataTypes.STRING
+}, {
+    sequelize,
+    tableName: "answer"
+});
 
 module.exports = Answer;

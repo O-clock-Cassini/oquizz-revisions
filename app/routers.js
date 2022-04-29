@@ -16,8 +16,14 @@ router.get('/questions/delete/:id', questionController.delete);
 
 
 router.get('/levels', levelController.all);
-router.get('/levels/delete/:id', levelController.delete);
-router.get('/levels/demoCreate', levelController.create);
+router.get('/levels/create', levelController.getCreate);
+router.post('/levels/create', levelController.doCreate);
+
+router.get('/levels/edit/:id', levelController.getUpdate);
+router.post('/levels/edit/:id', levelController.doUpdate);
+
+router.get('/levels/delete/:id', levelController.getDelete);
+router.post('/levels/delete/:id', levelController.doDelete);
 
 router.get('/levels/:id', levelController.get);
 

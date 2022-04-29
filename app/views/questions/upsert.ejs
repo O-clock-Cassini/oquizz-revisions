@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<form action="<%= question ? '/questions/edit' : '/questions/create' %>" method="POST" >
+<form action="<%= question ? '/questions/edit/<%= question.id %>' : '/questions/create' %>" method="POST" >
     <input placeholder="question" name="question" value="<%= question ? question.question : '' %>">
     <input placeholder="anecdote" name="anecdote" value="<%= question ? question.anecdote : '' %>">
     <input placeholder="wiki"  name="wiki" value="<%= question ? question.wiki : '' %>">
