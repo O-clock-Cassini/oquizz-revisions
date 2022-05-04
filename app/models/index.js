@@ -109,4 +109,4 @@ Tag.belongsToMany(Quiz, {
 // ]
 
 
-module.exports = { Level, Question, Answer }
+module.exports = { Level, Question, Answer, Quiz, Tag, User }
