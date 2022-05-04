@@ -15,7 +15,7 @@ const mainController = {
         // res.json(quizzes);
         res.render('home', {quizzes});
     }
-faut 
+
 }
 
 module.exports = mainController;

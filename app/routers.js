@@ -2,6 +2,8 @@ const express = require('express');
 const levelController = require('./controllers/levelController');
 const mainController = require('./controllers/mainController');
 const questionController = require('./controllers/questionController');
+const quizzController = require('./controllers/quizzController');
+
 
 const router = express.Router();
 
@@ -26,5 +28,7 @@ router.get('/levels/delete/:id', levelController.getDelete);
 router.post('/levels/delete/:id', levelController.doDelete);
 
 router.get('/levels/:id', levelController.get);
+
+router.get('/quizz/:id', quizzController.oneQuizz);
 
 module.exports = router;
